@@ -1,0 +1,135 @@
+/* Existing styles */
+
+.messages-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f378;
+    border-radius: 8px;
+}
+
+.messages-sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px 0 0 8px;
+}
+
+.messages-sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.messages-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.messages-sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.messages-sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.messages-sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.messages-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f378;
+    border-radius: 0 8px 8px 0;
+}
+
+.messages-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.messages-header h2 {
+    margin: 0;
+}
+
+.message-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.message-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+}
+
+.message-item.received {
+    border-left: 5px solid #28a745;
+}
+
+.message-item.sent {
+    border-left: 5px solid #007bff;
+}
+
+.message-item p {
+    margin: 0;
+    padding: 0;
+}
+
+.message-item strong {
+    color: #333;
+}
+
+.message-item em {
+    color: #777;
+    font-size: 0.9em;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.message-form {
+    margin-top: 20px;
+}
+
+.message-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.message-form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.message-form button:hover {
+    background-color: #0056b3;
+}
+
+/* New styles for hiding/showing messages */
+
+.message-list {
+    display: none;
+}
+
+.message-list.active {
+    display: block;
+}

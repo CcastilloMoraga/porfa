@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Crear Proyecto{% endblock %}
+
+{% block contenido %}
+<div class="espacio">
+    <div class="centrado-vertical">
+        <div class="tarjeta-centro">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Crear Proyecto</h2>
+                    <hr>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="nombre">Nombre del Proyecto:</label>
+                            {{ form.nombre }}
+                        </div>
+                        <div class="form-group">
+                            <label for="salario">Salario:</label>
+                            {{ form.salario }}
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción:</label>
+                            {{ form.descripcion }}
+                        </div>
+                        <div class="form-group">
+                            <label for="modalidad">Modalidad:</label>
+                            {{ form.modalidad }}
+                        </div>
+                        <div class="form-group">
+                            <label for="periodo">Periodo:</label>
+                            {{ form.periodo }}
+                        </div>
+                        <div class="form-group">
+                            <label for="imagen">Imagen:</label>
+                            {{ form.imagen }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria">Categoría:</label>
+                            {{ form.categoria }}
+                        </div>
+                        <div class="form-group" id="ciudad-field">
+                            <label for="ciudad">Ciudad:</label>
+                            {{ form.ciudad }}
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <input type="reset" value="Cancelar" class="btn btn-secondary">
+                            &nbsp;
+                            <input type="submit" value="Guardar" class="btn btn-primary">
+                        </div>
+                    </form>
+                    {{ mensaje }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("id_periodo").setAttribute('type', 'date');
+
+    function checkModalidad() {
+        var modalidad = document.getElementById("id_modalidad").value;
+        var ciudadField = document.getElementById("ciudad-field");
+        if (modalidad === "REMOTO") {
+            ciudadField.style.display = 'none';
+        } else {
+            ciudadField.style.display = 'block';
+        }
+    }
+
+    document.getElementById("id_modalidad").addEventListener("change", checkModalidad);
+    document.addEventListener('DOMContentLoaded', function() {
+        checkModalidad();  // Call it on page load
+    });
+</script>
+{% endblock %}

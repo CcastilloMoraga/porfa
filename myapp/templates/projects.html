@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Proyectos{% endblock %}
+{% load static %}
+{% load humanize %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/listarpro.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<br>
+<div class="container">
+    <form method="GET" action="{% url 'projects' %}" class="search-form">
+        <input type="text" name="nombre" placeholder="Nombre del proyecto" value="{{ request.GET.nombre }}">
+        <select name="modalidad">
+            <option value="">Modalidad</option>
+            {% for modalidad in modalidades %}
+                <option value="{{ modalidad.id }}" {% if request.GET.modalidad == modalidad.id|stringformat:"s" %}selected{% endif %}>{{ modalidad.nombre }}</option>
+            {% endfor %}
+        </select>
+        <select name="categoria">
+            <option value="">Categoría</option>
+            {% for categoria in categorias %}
+                <option value="{{ categoria.id }}" {% if request.GET.categoria == categoria.id|stringformat:"s" %}selected{% endif %}>{{ categoria.nombre }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="salario" placeholder="Salario mínimo" value="{{ request.GET.salario }}">
+        <button type="submit">Buscar</button>
+    </form>
+    <div class="projects-list">
+        {% for proyecto in proyectos %}
+        <div class="project-card" data-name="{{ proyecto.nombre }}" data-image="{% if proyecto.imagen %}{{ proyecto.imagen.url }}{% else %}{% static 'img/default-image.png' %}{% endif %}" data-salary="{{ proyecto.salario|intcomma }}" data-description="{{ proyecto.descripcion }}" data-modalidad="{{ proyecto.modalidad.nombre }}">
+            {% if proyecto.imagen %}
+                <img src="{{ proyecto.imagen.url }}" alt="{{ proyecto.nombre }}">
+            {% else %}
+                <img src="{% static 'img/default-image.png' %}" alt="{{ proyecto.nombre }}">
+            {% endif %}
+            <h2>{{ proyecto.nombre }}</h2>
+            <p class="salary">$ {{ proyecto.salario|intcomma }}</p>
+            <p>{{ proyecto.descripcion|truncatewords:20 }}</p>
+            <p class="project-meta">{{ proyecto.modalidad.nombre }}</p>
+            <a href="{% url 'apply_to_project' proyecto.id %}" class="btn btn-primary">Aplicar</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img id="modalImage" src="" alt="">
+        <h2 id="modalName"></h2>
+        <p class="salary" id="modalSalary"></p>
+        <p id="modalDescription"></p>
+        <p class="project-meta" id="modalModalidad"></p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById('projectModal');
+        var modalImage = document.getElementById('modalImage');
+        var modalName = document.getElementById('modalName');
+        var modalSalary = document.getElementById('modalSalary');
+        var modalDescription = document.getElementById('modalDescription');
+        var modalModalidad = document.getElementById('modalModalidad');
+        var closeBtn = document.getElementsByClassName('close')[0];
+
+        document.querySelectorAll('.project-card').forEach(function(card) {
+            card.addEventListener('click', function() {
+                modalImage.src = card.dataset.image;
+                modalName.textContent = card.dataset.name;
+                modalSalary.textContent = '$ ' + card.dataset.salary;
+                modalDescription.textContent = card.dataset.description;
+                modalModalidad.textContent = card.dataset.modalidad;
+
+                modal.style.display = 'flex';
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,1250 @@
+/* General Styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+body {
+    background: linear-gradient(245.59deg, #f5f378 0%, #f5f378 28.53%, #f5f378 52%);
+    color: black;
+}
+
+.black-text {
+    color: black;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(245.59deg, #f5f378 0%, #f5f378 28.53%, #f5f378 52%);
+    padding: 20px 9%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: black;
+}
+
+/* Navigation */
+.navlist {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navlist li {
+    margin-left: 60px;
+}
+
+.navlist a {
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all 0.55s ease;
+    text-decoration: none;
+}
+
+.navlist a:hover {
+    border-bottom: 2px solid black;
+}
+
+#menu-icon {
+    color: black;
+    font-size: 35px;
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+}
+
+/* Home Hero Section */
+.hero {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(245.59deg, #f5f378 0%, #f5f378 28.53%, #f5f378 52%);
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+    padding: 0 9%;
+}
+
+.hero-text h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 35px;
+}
+
+.hero-text h1 {
+    font-size: 50px;
+    line-height: 1;
+    color: black;
+    margin: 0 0 45px;
+}
+
+.hero-text p {
+    color: black;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 40px;
+}
+
+.hero-img img {
+    width: 600px;
+    height: auto;
+}
+
+.hero-text a {
+    display: inline-block;
+    color: black;
+    background: #f5f378;
+    border: 1px solid;
+    padding: 12px 30px;
+    line-height: 1.4;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+    text-transform: uppercase;
+    transition: all .55s ease;
+}
+
+.hero-text a:hover {
+    background: transparent;
+    border: 1px solid black;
+    transform: translate(8px);
+}
+
+.hero-text a.ctaa {
+    background: transparent;
+    border: 1px solid black;
+    margin-left: 20px;
+}
+
+.hero-text a.ctaa i {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Projects Section */
+.proyectos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.proyecto {
+    background-color: #f5f378;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.proyecto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.proyecto img {
+    width: 100%;
+    height: auto;
+        border-radius: 10px;
+        margin-bottom: 15px;
+}
+
+.detalle {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.detalle h5 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.detalle h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.detalle h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 990px) {
+    #menu-icon {
+        display: block;
+    }
+    .navlist {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 100%;
+        max-width: 300px;
+        height: 100%;
+        background: #f5f378;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 20px;
+        transition: all 0.55s ease;
+        z-index: 999;
+    }
+
+    .navlist li {
+        margin: 20px 0;
+    }
+
+    .navlist a {
+        font-size: 18px;
+    }
+
+    .navlist.open {
+        right: 0;
+    }
+}
+
+/* Login Form Styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f378;
+    padding: 20px;
+}
+
+.login-form {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-form h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login-form hr {
+    margin: 20px 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.errorlist {
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+    color: red;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+}
+
+.btn-register {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 15px;
+    border: none;
+    background-color: #6c757d;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.btn-register:hover {
+    background-color: #5a6268;
+}
+
+@media (max-width: 600px) {
+    .login-form {
+        padding: 20px;
+        width: 90%;
+    }
+}
+
+
+/* ++++++++++++++++++++++++ */
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.errorlist {
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+    color: red;
+}
+
+.btn-login, .btn-register {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.btn-login {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+}
+
+.btn-register {
+    background-color: #6c757d;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.btn-register:hover {
+    background-color: #5a6268;
+}
+
+/* Register Form Styles */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px); /* Ajusta el valor según la altura del header */
+    background: #f5f378;
+    padding: 20px;
+    margin-top: 70px; /* Ajusta el valor según la altura del header */
+}
+
+.register-form {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.register-form h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.register-form hr {
+    margin: 20px 0;
+}
+
+@media (max-width: 600px) {
+    .register-form {
+        padding: 20px;
+        width: 90%;
+    }
+}
+
+/* Estilos del Formulario de Agregar Proyecto */
+.espacio {
+    padding: 40px 0;
+}
+
+.centrado-vertical {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px); /* Ajustar según la altura del header */
+}
+
+.tarjeta-centro {
+    background-color: #f5f378;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.card-body h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.card-body hr {
+    margin: 20px 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Estilos para el formulario de búsqueda */
+/* Estilos para el formulario de búsqueda */
+/* Estilos para el formulario de búsqueda */
+.search-container {
+    margin-top: 20px; /* Ajusta el margen superior */
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f5f378; /* Color característico */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-container form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.search-container .form-group {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.search-container input, .search-container select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    width: 100%;
+}
+
+.search-container .btn-primary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+}
+
+.search-container .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para los proyectos */
+/* Estilos para la lista de proyectos */
+/* Contenedor de la lista de proyectos */
+/* Contenedor de la lista de proyectos */
+.projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Tarjetas de proyecto */
+.project-card {
+    background-color: #333; /* Color de fondo amarillo */
+    color: #f5f378; /* Color del texto */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(25% - 20px); /* Ajusta la tarjeta para que ocupe un cuarto del contenedor */
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease; /* Agrega una transición para la animación */
+}
+
+.project-card:hover {
+    transform: scale(1.05); /* Efecto de animación al pasar el mouse */
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px; /* Ajusta esta altura según tus necesidades */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.project-card h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.project-card .salary {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.project-card .project-meta {
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+.project-card .apply-btn {
+    background-color: #333; /* Color de fondo del botón */
+    color: #f5f378; /* Color del texto del botón */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: auto; /* Mueve el botón a la parte inferior de la tarjeta */
+}
+
+/* Barra de búsqueda */
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-form input,
+.search-form select,
+.search-form button {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1 1 200px;
+    margin-bottom: 10px;
+}
+
+.search-form button {
+    background-color: #333;
+    color: #f5f378;
+    border: none;
+    cursor: pointer;
+}
+    
+/* Estilos para la ventana modal */
+
+
+
+.projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.project-card {
+    background-color: #333;
+    border-radius: 20px;
+    padding: 20px;
+    width: calc(33.333% - 40px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.project-card h2, .project-card p, .project-card .salary, .project-card .project-meta, .project-card .apply-btn {
+    text-shadow: 1px 1px 2px #000;
+}
+
+.project-card h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    color: #f5f378;
+}
+
+.project-card p {
+    margin: 10px 0;
+    color: #ddd;
+}
+
+.project-card .salary {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #f5f378;
+}
+
+.project-card .project-meta {
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.project-card .apply-btn {
+    background-color: #f5f378;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.project-card .apply-btn:hover {
+    background-color: #e5e368;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    background-color: #333;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    border-radius: 20px;
+    color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px; /* Added max-width to standardize modal size */
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-content h2 {
+    font-size: 2em;
+    color: #f5f378;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.modal-content p {
+    color: #ddd;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.modal-content .salary {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #f5f378;
+}
+
+.modal-content .project-meta {
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.modal-content .close:hover,
+.modal-content .close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes modalopen {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f5f378;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.espacio {
+    padding: 50px 0;
+}
+
+.perfil-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.perfil-header .avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.perfil-header .info {
+    flex: 1;
+}
+
+.perfil-header .info h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.perfil-header .info h3 {
+    font-size: 1.2em;
+    color: #666;
+    margin: 10px 0;
+}
+
+.perfil-header .info p {
+    font-size: 1em;
+    color: #333;
+    margin: 5px 0;
+}
+
+.perfil-header .info .btn {
+    margin-top: 15px;
+}
+
+.experiencia {
+    margin-top: 40px;
+}
+
+/* Experience Styles */
+.experiencia {
+    margin-top: 40px;
+}
+
+.experiencia h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #e1e1e1;
+    padding-bottom: 10px;
+}
+
+.experiencia-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #e2bf73;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 4px solid #3f3415;  /* Añadir una línea de borde de color */
+}
+
+.experiencia-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.experiencia-item h3 {
+    font-size: 1.4em;
+    margin: 0;
+    color: #333;
+}
+
+.experiencia-item h4 {
+    font-size: 1.2em;
+    color: #666;
+    margin: 5px 0;
+}
+
+.experiencia-item p {
+    font-size: 1em;
+    color: #555;
+    margin: 5px 0;
+}
+
+.experiencia-item .periodo {
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+
+.card {
+    background-color: #f5f378;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ddd;  /* Añadido borde para mejor separación */
+}
+
+.card:hover {
+    transform: translateY(-5px);  /* Efecto hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.card-content {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.card-footer .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.card-footer .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.card-footer .btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.card-footer .btn-secondary:hover {
+    background-color: #5a6268;
+}
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+/* General Styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background: linear-gradient(245.59deg, #f5f378 0%, #f5f378 28.53%, #f5f378 52%);
+    color: black;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(245.59deg, #f5f378 0%, #f5f378 28.53%, #f5f378 52%);
+    padding: 20px 9%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: black;
+}
+
+/* Navigation */
+.navlist {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navlist li {
+    margin-left: 60px;
+}
+
+.navlist a {
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all 0.55s ease;
+    text-decoration: none;
+}
+
+.navlist a:hover {
+    border-bottom: 2px solid black;
+}
+
+#menu-icon {
+    color: black;
+    font-size: 35px;
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+}
+
+/* Projects Section */
+.container {
+    padding-top: 80px; /* Ajustar el padding para que el contenido no quede detrás del encabezado fijo */
+}
+
+.projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.project-card {
+    background-color: #333;
+    border-radius: 20px;
+    padding: 20px;
+    width: calc(33.333% - 40px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.project-card h2, .project-card p, .project-card .salary, .project-card .project-meta, .project-card .apply-btn {
+    text-shadow: 1px 1px 2px #000;
+}
+
+.project-card h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    color: #f5f378;
+}
+
+.project-card p {
+    margin: 10px 0;
+    color: #ddd;
+}
+
+.project-card .salary {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #f5f378;
+}
+
+.project-card .project-meta {
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.project-card .apply-btn {
+    background-color: #f5f378;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.project-card .apply-btn:hover {
+    background-color: #e5e368;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    background-color: #333;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    border-radius: 20px;
+    color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px; /* Added max-width to standardize modal size */
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-content h2 {
+    font-size: 2em;
+    color: #f5f378;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.modal-content p {
+    color: #ddd;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.modal-content .salary {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #f5f378;
+}
+
+.modal-content .project-meta {
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.modal-content .close:hover,
+.modal-content .close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes modalopen {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

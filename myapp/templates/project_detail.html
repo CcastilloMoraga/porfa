@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Mis Proyectos{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/mis_proyectos.css' %}">
+{% endblock %}
+{% block contenido %}
+<div class="mis-proyectos-container">
+    <h1 class="mis-proyectos-title">Mis Proyectos</h1>
+    <div class="mis-proyectos-list">
+        {% for proyecto in proyectos %}
+        <div class="mis-proyectos-card">
+            <div class="mis-proyectos-card-header">
+                <h2>{{ proyecto.nombre }}</h2>
+                <span class="heart-icon">❤</span>
+            </div>
+            <p><strong>Salario:</strong> {{ proyecto.salario_formateado }}</p>
+            <p>{{ proyecto.descripcion }}</p>
+            <p><strong>Modalidad:</strong> {{ proyecto.modalidad.nombre }}</p>
+            <p><strong>Periodo:</strong> {{ proyecto.periodo }}</p>
+            <div class="mis-proyectos-card-footer">
+                <small>Creado por: {{ proyecto.creator.username }}</small>
+                <span class="rating">★ 4.8</span>
+                {% if proyecto.creator == user %}
+                <button class="btn btn-primary" onclick="toggleEditForm({{ proyecto.id }})">Editar</button>
+                <form action="{% url 'mis_proyectos' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="proyecto_id" value="{{ proyecto.id }}">
+                    <button type="submit" name="delete_project" class="btn btn-danger">Eliminar</button>
+                </form>
+                <div id="edit-form-{{ proyecto.id }}" class="mis-proyectos-edit-form" style="display:none;">
+                    <form action="{% url 'mis_proyectos' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="proyecto_id" value="{{ proyecto.id }}">
+                        <div class="form-group">
+                            <label for="nombre">Nombre del Proyecto:</label>
+                            <input type="text" name="nombre" value="{{ proyecto.nombre }}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="salario">Salario:</label>
+                            <input type="text" name="salario" value="{{ proyecto.salario }}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción:</label>
+                            <textarea name="descripcion" class="form-control">{{ proyecto.descripcion }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalidad">Modalidad:</label>
+                            <select name="modalidad" class="form-control">
+                                <option value="REMOTO" {% if proyecto.modalidad == "REMOTO" %}selected{% endif %}>Remoto</option>
+                                <option value="PRESENCIAL" {% if proyecto.modalidad == "PRESENCIAL" %}selected{% endif %}>Presencial</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="periodo">Periodo:</label>
+                            <input type="date" name="periodo" value="{{ proyecto.periodo }}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="imagen">Imagen:</label>
+                            <input type="file" name="imagen" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria">Categoría:</label>
+                            <input type="text" name="categoria" value="{{ proyecto.categoria }}" class="form-control">
+                        </div>
+                        <div class="form-group" id="ciudad-field-{{ proyecto.id }}">
+                            <label for="ciudad">Ciudad:</label>
+                            <input type="text" name="ciudad" value="{{ proyecto.ciudad }}" class="form-control">
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <input type="reset" value="Cancelar" class="btn btn-secondary" onclick="toggleEditForm({{ proyecto.id }})">
+                            &nbsp;
+                            <input type="submit" name="edit_project" value="Guardar" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    function toggleEditForm(proyectoId) {
+        const form = document.getElementById(`edit-form-${proyectoId}`);
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+{% endblock %}

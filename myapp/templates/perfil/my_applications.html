@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Mis Aplicaciones{% endblock %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/solicitudes.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<br>
+<br>
+<div class="container">
+    <h2>Mis Postulaciones</h2>
+    <div class="applications-list">
+        {% for application in applications %}
+        <div class="application-card">
+            <div class="application-image">
+                {% if application.project.imagen %}
+                <img src="{{ application.project.imagen.url }}" alt="Imagen del proyecto">
+                {% else %}
+                <img src="{% static 'img/default-image.png' %}" alt="Imagen por defecto">
+                {% endif %}
+            </div>
+            <div class="application-details">
+                <h3>{{ application.project.nombre }}</h3>
+                <p><strong>Creador:</strong> {{ application.project.creator.username }}</p>
+                <p><strong>Estado:</strong> {{ application.get_status_display }}</p>
+                <p><strong>Fecha de Aplicación:</strong> {{ application.date_applied|date:"d M Y H:i" }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

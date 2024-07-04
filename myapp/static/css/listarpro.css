@@ -1,0 +1,232 @@
+/* listarpro.css */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.project-card {
+    background-color: #333;
+    border-radius: 20px;
+    padding: 20px;
+    width: calc(1% - 40); /* Reduced the width for thinner cards */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.project-card h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #f5f378;
+}
+
+.project-card .heart-icon {
+    font-size: 1.5em;
+    color: #f5f378;
+}
+
+.project-card p {
+    margin: 10px 0;
+    color: #ddd;
+}
+
+.project-card .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.project-card small {
+    color: #aaa;
+}
+
+.project-card .rating {
+    background-color: #444;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #f5f378;
+}
+
+
+/* Estilos para la página de Mis Proyectos */
+.mis-proyectos-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mis-proyectos-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.mis-proyectos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mis-proyectos-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.mis-proyectos-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.mis-proyectos-card-header h2 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.mis-proyectos-card-header .heart-icon {
+    font-size: 1.5em;
+    color: #e74c3c;
+    cursor: pointer;
+}
+
+.mis-proyectos-card p {
+    font-size: 1em;
+    color: #666;
+    margin: 5px 0;
+}
+
+.mis-proyectos-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.mis-proyectos-card-footer small {
+    color: #999;
+}
+
+.mis-proyectos-card-footer .rating {
+    color: #f39c12;
+}
+
+.mis-proyectos-card-footer .btn {
+    margin-left: 10px;
+}
+
+.mis-proyectos-edit-form {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.mis-proyectos-edit-form .form-group {
+    margin-bottom: 15px;
+}
+
+.mis-proyectos-edit-form .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.mis-proyectos-edit-form .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mis-proyectos-edit-form .btn-primary {
+    background-color: #3498db;
+    border: none;
+    color: white;
+}
+
+.mis-proyectos-edit-form .btn-secondary {
+    background-color: #95a5a6;
+    border: none;
+    color: white;
+    
+}
+
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

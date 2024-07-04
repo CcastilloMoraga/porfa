@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Gestionar Aplicaciones{% endblock %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/solicitudes.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<br>
+<div class="container">
+    <h2>Gestionar Aplicaciones</h2>
+    {% for application in applications %}
+    <div class="project-card">
+        <h3>{{ application.project.nombre }}</h3>
+        <p><strong>Aplicante:</strong> {{ application.user.username }}</p>
+        <p><strong>Estado:</strong> {{ application.get_status_display }}</p>
+        <p><strong>Fecha de Aplicación:</strong> {{ application.date_applied|date:"d M Y H:i" }}</p>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="application_id" value="{{ application.id }}">
+            <label for="status">Status:</label>
+            <select name="status" id="status">
+                <option value="pending" {% if application.status == 'pending' %}selected{% endif %}>Pending</option>
+                <option value="approved" {% if application.status == 'approved' %}selected{% endif %}>Approved</option>
+                <option value="rejected" {% if application.status == 'rejected' %}selected{% endif %}>Rejected</option>
+            </select>
+            <br>
+            <button type="submit" class="btn btn-primary">Actualizar Estado</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

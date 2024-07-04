@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Mis Proyectos{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/listarpro.css' %}">
+{% endblock %}
+{% block contenido %}
+<div class="mis-proyectos-container">
+    <h1 class="mis-proyectos-title">Mis Proyectos</h1>
+    <div class="mis-proyectos-list">
+        {% for proyecto in proyectos %}
+        <div class="mis-proyectos-card" data-id="{{ proyecto.id }}">
+            <div class="mis-proyectos-card-header">
+                <h2>{{ proyecto.nombre }}</h2>
+                <span class="heart-icon">❤</span>
+            </div>
+            <p class="salario"><strong>Salario:</strong> {{ proyecto.salario_formateado }}</p>
+            <p class="descripcion">{{ proyecto.descripcion }}</p>
+            <p class="modalidad"><strong>Modalidad:</strong> {{ proyecto.modalidad.nombre }}</p>
+            <p class="periodo"><strong>Periodo:</strong> {{ proyecto.periodo }}</p>
+            <div class="mis-proyectos-card-footer">
+                <small>Creado por: {{ proyecto.creator.username }}</small>
+                <span class="rating">★ 4.8</span>
+                {% if proyecto.creator == user %}
+                <button class="btn btn-primary" onclick="openEditFormModal({{ proyecto.id }})">Editar</button>
+                <form action="{% url 'mis_proyectos' %}" method="post" style="display:inline;" onsubmit="return confirmDelete();">
+                    {% csrf_token %}
+                    <input type="hidden" name="proyecto_id" value="{{ proyecto.id }}">
+                    <button type="submit" name="delete_project" class="btn btn-danger">Eliminar</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Modal structure -->
+<div id="editFormModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditFormModal()">&times;</span>
+        <form id="editForm" action="{% url 'mis_proyectos' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="proyecto_id" id="proyecto_id">
+            <div class="form-group">
+                <label for="nombre">Nombre del Proyecto:</label>
+                <input type="text" name="nombre" id="nombre" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="salario">Salario:</label>
+                <input type="text" name="salario" id="salario" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea name="descripcion" id="descripcion" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="modalidad">Modalidad:</label>
+                <select name="modalidad" id="modalidad" class="form-control">
+                    {% for modalidad in modalidades %}
+                        <option value="{{ modalidad.id }}">{{ modalidad.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="periodo">Periodo:</label>
+                <input type="date" name="periodo" id="periodo" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="imagen">Imagen:</label>
+                <input type="file" name="imagen" id="imagen" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoría:</label>
+                <select name="categoria" id="categoria" class="form-control">
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" name="ciudad" id="ciudad" class="form-control">
+            </div>
+            <div class="d-flex justify-content-end">
+                <input type="reset" value="Cancelar" class="btn btn-secondary" onclick="closeEditFormModal()">
+                &nbsp;
+                <input type="submit" name="edit_project" value="Guardar" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openEditFormModal(proyectoId) {
+        const projectCard = document.querySelector(`.mis-proyectos-card[data-id="${proyectoId}"]`);
+        const project = {
+            id: proyectoId,
+            nombre: projectCard.querySelector('h2').innerText,
+            salario: projectCard.querySelector('.salario').innerText.split(': ')[1],
+            descripcion: projectCard.querySelector('.descripcion').innerText,
+            modalidad: projectCard.querySelector('.modalidad').innerText.split(': ')[1],
+            periodo: projectCard.querySelector('.periodo').innerText.split(': ')[1],
+            categoria: projectCard.querySelector('.categoria') ? projectCard.querySelector('.categoria').innerText.split(': ')[1] : '',
+            ciudad: projectCard.querySelector('.ciudad') ? projectCard.querySelector('.ciudad').innerText.split(': ')[1] : '',
+        };
+
+        document.getElementById('proyecto_id').value = project.id;
+        document.getElementById('nombre').value = project.nombre;
+        document.getElementById('salario').value = project.salario;
+        document.getElementById('descripcion').value = project.descripcion;
+        document.getElementById('modalidad').value = project.modalidad;
+        document.getElementById('periodo').value = project.periodo;
+        document.getElementById('categoria').value = project.categoria;
+        document.getElementById('ciudad').value = project.ciudad;
+
+        document.getElementById('editFormModal').style.display = 'block';
+    }
+
+    function closeEditFormModal() {
+        document.getElementById('editFormModal').style.display = 'none';
+    }
+
+    function confirmDelete() {
+        return confirm("¿Estás seguro de que deseas eliminar este proyecto?");
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('editFormModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}

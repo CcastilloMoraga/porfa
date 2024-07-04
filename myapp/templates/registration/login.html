@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Ingreso al Sistema{% endblock %}
+
+{% block contenido %}
+{% load static %}
+
+<div class="login-container espacio">
+    <div class="login-form">
+        <h2>Ingresa tus credenciales</h2>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Usuario:</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.username.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">Contraseña:</label>
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.password.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-login">Ingresar</button>
+            <br><br>
+            <a class="btn btn-register" href="{% url 'registro' %}">Registrate</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

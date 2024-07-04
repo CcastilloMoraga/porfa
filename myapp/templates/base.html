@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Collaborize Website{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alkalam&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}" class="logo">COLLABORIZE</a>
+        <ul class="navlist">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'agregar_proyecto' %}">Crear Proyecto</a></li>
+            <li><a href="{% url 'projects' %}">Proyectos</a></li>
+            <li><a href="{% url 'messages_view' %}">Mensajes</a></li>
+            <li><a href="{% url 'my_applications' %}">Solicitudes</a></li>
+            <li><a href="{% url 'manage_applications' %}">Manejo Postulaciones</a></li>
+            <li><a href="{% url 'mis_proyectos' %}">Manejo Proyectos</a></li>
+
+
+            <li><a href="{% url 'profile' %}" class="nav-bar__enlaces">{{ user.username|capfirst }}</a></li>
+               <li>
+                <a href="{% url 'logout' %}" class="nav-bar__enlaces" id="logout-link">Salir</a>
+                <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                    {% csrf_token %}
+                </form>
+            </li>
+            {% else %}
+            <li><a href="{% url 'login' %}" class="nav-bar__enlaces">Acceder</a></li>
+            <li><a href="{% url 'registro' %}">Registrate</a></li>
+            <li><a href="{% url 'contact' %}">Contactanos</a></li>
+            <li><a href="{% url 'about' %}">Acerca</a></li>
+            {% endif %}
+        </ul>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+    {% block contenido %}{% endblock %}
+
+    <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Add Select2 CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        document.getElementById('logout-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('logout-form').submit();
+        });
+    </script>
+</body>
+</html>

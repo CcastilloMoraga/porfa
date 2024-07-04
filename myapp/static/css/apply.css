@@ -1,0 +1,79 @@
+/* apply.css */
+
+/* General container styling */
+.container {
+    margin-top: 20px;
+}
+
+/* Project details styling */
+.project-detail {
+    background-color: #f5f378;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.project-detail h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.project-detail p {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.project-detail p strong {
+    color: #000;
+}
+
+/* Form styling */
+.apply-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.apply-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.apply-form form .btn {
+    align-self: flex-start;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.apply-form form .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Message styling */
+.messages {
+    margin-top: 20px;
+}
+
+.messages .alert {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.messages .alert.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.messages .alert.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}

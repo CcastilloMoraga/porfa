@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Listar Proyectos{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/listarpro.css' %}">
+{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h1>Listar Proyectos</h1>
+    <div class="projects-list">
+        {% for proyecto in proyectos %}
+        <div class="project-card">
+            <h2>{{ proyecto.nombre }}</h2>
+            <p><strong>Salario:</strong> {{ proyecto.salario_formateado }}</p>
+            <p>{{ proyecto.descripcion }}</p>
+            <p><strong>Modalidad:</strong> {{ proyecto.modalidad }}</p>
+            <p><strong>Categoría:</strong> {{ proyecto.categoria }}</p>
+            <p><strong>Ciudad:</strong> {{ proyecto.ciudad }}</p>
+            <a href="{% url 'apply_to_project' proyecto.id %}" class="btn btn-primary">Aplicar</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

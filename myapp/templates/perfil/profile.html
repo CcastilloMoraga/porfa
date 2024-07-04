@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Perfil{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock css %}
+
+{% block contenido %}
+<div class="espacio">
+    <div class="container">
+        <div class="perfil-header minimal">
+            <div class="avatar">
+                {% if user_profile.avatar %}
+                    <img src="{{ user_profile.avatar.url }}" alt="Avatar">
+                {% else %}
+                    <img src="{% static 'img/default-avatar.png' %}" alt="Default Avatar">
+                {% endif %}
+            </div>
+            <div class="info">
+                <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+                <h3>{{ user_profile.location }}</h3>
+                <p>{{ user_profile.bio }}</p>
+                <p class="tarifa">Tarifa por hora: {{ user_profile.hourly_rate }}</p>
+                <a href="{% url 'edit_profile' %}" class="btn btn-primary">Editar Perfil</a>
+            </div>
+        </div>
+        <div class="experiencia minimal">
+            <h2>Experiencia</h2>
+            {% for exp in experiences %}
+            <div class="experiencia-item">
+                <h3>{{ exp.title }}</h3>
+                <h4>{{ exp.company }} - {{ exp.location }}</h4>
+                <p class="periodo"><strong>Desde:</strong> {{ exp.start_date }} <strong>Hasta:</strong> {{ exp.end_date|default:'Presente' }}</p>
+                <p>{{ exp.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

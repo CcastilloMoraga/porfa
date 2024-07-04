@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<section class="hero">
+    <div class="hero-text">
+        <h4>Líderes en el mercado</h4>
+        <h1>¿Buscas ser parte de algo?</h1>
+        <p>Se parte de la revolución de Colaborize, 
+        <br> Publica tus Proyectos o necesidades para <br> que gente capacitada pueda echarte una mano</p>
+        <a href="{% url 'registro' %}">Registrarse</a>
+        <a href="{% url 'login' %}" class="ctaa"><i class="ri-play-fill"></i>Iniciar Sesión</a>
+    </div>
+    <div class="hero-img">
+        <img src="{% static 'img/main.png' %}" alt="Imagen principal">
+    </div>
+</section>
+{% endblock %}
